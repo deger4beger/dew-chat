@@ -1,0 +1,30 @@
+.wrapper {
+	height: 58px;
+	width: 100%;
+	background-color: var(--firstDark);
+	color: var(--firstLight);
+	display: flex;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	.container {
+		width: 60%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		.logo {
+			user-select: none;
+			padding: 1px 10px;
+			font-size: var(--fsz18);
+			color: var(--firstLight);
+			background-color: var(--mainLight);
+			transition: 0.1s;
+			border-radius: 2px;
+			&:hover {
+				cursor: pointer;
+				background-color: var(--mainDark);
+			}
+		}
+	}
+}

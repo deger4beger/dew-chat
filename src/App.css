@@ -1,0 +1,73 @@
+/*Обнуление*/
+*{
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,*:before,*:after{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+/*html,body{
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}*/
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+html {
+    --mainFont: "Lexend";
+    --firstLight: #efefef;
+    --firstDark: #1B1B1B;
+    --secondDark: #4C4C4C;
+    --additional: #A1A1A1;
+    --mainDark: #C32433;
+    --mainLight: #DE3848;
+    --fsz50: 50px;
+    --fsz32: 32px;
+    --fsz18: 18px;
+    --fsz16: 16px;
+}
+
+/* Set core body defaults */
+body {
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: var(--firstLight);
+    color: var(--color);
+}
+
+* {
+    font-family: var(--mainFont), sans-serif;
+}
+
+.mainBlock {
+  padding-top: 58px;
+  max-height: 100vh;
+  min-height: 100vh;
+}

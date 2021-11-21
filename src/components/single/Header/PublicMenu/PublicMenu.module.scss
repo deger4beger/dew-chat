@@ -1,0 +1,18 @@
+.wrapper {
+	display: flex;
+	user-select: none;
+	.separator {
+		margin: 0px 10px;
+	}
+	.item {
+		cursor: pointer;
+		color: var(--firstLight);
+		transition: 0.1s;
+		&.active {
+			color: var(--mainLight);
+		}
+		&:hover {
+			color: var(--mainLight);
+		}
+	}
+}
