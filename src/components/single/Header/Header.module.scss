@@ -1,13 +1,14 @@
 .wrapper {
 	height: 58px;
 	width: 100%;
-	background-color: var(--firstDark);
-	color: var(--firstLight);
+	background-color: var(--secondLight);
+	color: var(--firstDark);
 	display: flex;
 	align-items: center;
 	position: fixed;
 	top: 0;
 	left: 0;
+	border-bottom: 2px solid var(--secondDark);
 	.container {
 		width: 60%;
 		margin: 0 auto;
@@ -17,14 +18,8 @@
 			user-select: none;
 			padding: 1px 10px;
 			font-size: var(--fsz18);
-			color: var(--firstLight);
-			background-color: var(--mainLight);
 			transition: 0.1s;
 			border-radius: 2px;
-			&:hover {
-				cursor: pointer;
-				background-color: var(--mainDark);
-			}
 		}
 	}
 }

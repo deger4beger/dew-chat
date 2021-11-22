@@ -6,13 +6,13 @@
 	}
 	.item {
 		cursor: pointer;
-		color: var(--firstLight);
+		color: var(--firstDark);
 		transition: 0.1s;
 		&.active {
-			color: var(--mainLight);
+			color: var(--main);
 		}
 		&:hover {
-			color: var(--mainLight);
+			color: var(--main);
 		}
 	}
 }

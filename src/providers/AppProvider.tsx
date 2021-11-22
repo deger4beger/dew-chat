@@ -10,6 +10,7 @@ interface IAppProviderProps {
 }
 
 const AppProvider: React.FC<IAppProviderProps> = ({component}) => {
+
 	return (
 		<BrowserRouter>
 			<Provider store={store}>

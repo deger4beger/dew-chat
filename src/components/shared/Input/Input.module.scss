@@ -1,15 +1,14 @@
 .input {
 	width: 450px;
 	font-size: var(--fsz18);
-	padding: 4px;
+	padding: 8px 12px;
 	background-color: var(--firstLight);
-	border-bottom: 2px solid var(--additional);
-	transition: 0.1s;
+	border: 2px solid var(--additional);
 	margin-bottom: 30px;
 	&:last-child {
 		margin-bottom: 0px;
 	}
-	&:focus {
-		border-color: var(--mainLight);
+	&:hover, &:focus {
+		border-color: var(--secondDark);
 	}
 }

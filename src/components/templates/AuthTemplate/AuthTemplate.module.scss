@@ -1,7 +1,4 @@
 .wrapper {
-	& * {
-		transition: 0.2s;
-	}
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,7 +6,7 @@
 	height: calc(100vh - 58px);
 	.title {
 		margin-bottom: 40px;
-		font-size: var(--fsz32);
+		font-size: var(--fsz28);
 		border-bottom: 2px solid var(--firstDark);
 		padding: 1px 16px;
 	}
