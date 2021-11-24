@@ -6,16 +6,16 @@ interface IThemeContext {
 	setTheme: (theme: ThemeType) => void
 }
 
-export const ThemeContext = React.createContext<IThemeContext>({theme: "dark", setTheme: () => void 0})
-
 interface IThemeProviderProps {
 	children: React.ReactNode
 }
 
+export const ThemeContext = React.createContext<IThemeContext>({theme: "dark", setTheme: () => void 0})
+
 const ThemeProvider: React.FC<IThemeProviderProps> = ({children}) => {
 
 	const storageTheme = localStorage.getItem("theme")
-	const [theme, setTheme] = useState<ThemeType>(storageTheme === "light" ? "light" : "dark")
+	const [theme, setTheme] = useState<ThemeType>(storageTheme === "dark" ? "dark" : "light")
 
 	const changeTheme = (theme: ThemeType) => {
 		for (let [key, value] of Object.entries(themes[theme])) {
