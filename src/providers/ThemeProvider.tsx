@@ -1,4 +1,12 @@
-import React, { useState } from "react"
+import React, { useLayoutEffect, useState } from "react"
+import { ThemeType, themes } from '../shared/themes';
+
+interface IThemeContext {
+	theme: ThemeType
+	setTheme: (theme: ThemeType) => void
+}
+
+export const ThemeContext = React.createContext<IThemeContext>({theme: "dark", setTheme: () => void 0})
 
 interface IThemeProviderProps {
 	children: React.ReactNode
@@ -6,31 +14,22 @@ interface IThemeProviderProps {
 
 const ThemeProvider: React.FC<IThemeProviderProps> = ({children}) => {
 
-	const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark")
+	const storageTheme = localStorage.getItem("theme")
+	const [theme, setTheme] = useState<ThemeType>(storageTheme === "light" ? "light" : "dark")
 
-	const themes = {
-		light: {
-			bg1: "#DEDEDE",
-		    bg2: "#D0CFCF",
-		    color1: "#1B1B1B",
-		    color2: "#4C4C4C",
-		    additional: "#A1A1A1",
-		    main: "#009485"
-		},
-		dark: {
-			bg1: "black",
-		    bg2: "#D0CFCF",
-		    color1: "white",
-		    color2: "#4C4C4C",
-		    additional: "#A1A1A1",
-		    main: "#009485"
+	const changeTheme = (theme: ThemeType) => {
+		for (let [key, value] of Object.entries(themes[theme])) {
+			document.documentElement.style.setProperty(`--${key}`, value)
 		}
+		setTheme(theme)
 	}
 
-	const ThemeContext = React.createContext([theme, setTheme])
+	useLayoutEffect(() => {
+		changeTheme(theme)
+	}, [theme])
 
 	return (
-		<ThemeContext.Provider value={[theme, setTheme]}>
+		<ThemeContext.Provider value={{theme, setTheme: changeTheme}}>
 			{children}
 		</ThemeContext.Provider>
 	)
