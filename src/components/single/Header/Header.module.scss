@@ -1,14 +1,14 @@
 .wrapper {
 	height: 58px;
 	width: 100%;
-	background-color: var(--secondLight);
+	background-color: var(--bg2);
 	color: var(--firstDark);
 	display: flex;
 	align-items: center;
 	position: fixed;
 	top: 0;
 	left: 0;
-	border-bottom: 2px solid var(--secondDark);
+	border-bottom: 2px solid var(--color2);
 	.container {
 		width: 60%;
 		margin: 0 auto;

@@ -10,7 +10,7 @@ const Header = () => {
 		<div className={s.wrapper}>
 			<div className={s.container}>
 				<div className={s.logo}>
-					some-chat ᐤ
+					dew-chat ᐤ
 				</div>
 				<div className={s.menu}>
 					{ isAuth ? <PrivateMenu /> : <PublicMenu /> }
