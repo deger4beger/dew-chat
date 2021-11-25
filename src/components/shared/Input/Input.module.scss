@@ -2,13 +2,14 @@
 	width: 450px;
 	font-size: var(--fsz18);
 	padding: 8px 12px;
-	background-color: var(--firstLight);
+	background-color: var(--bg1);
 	border: 2px solid var(--additional);
 	margin-bottom: 30px;
+	color: var(--color1);
 	&:last-child {
 		margin-bottom: 0px;
 	}
 	&:hover, &:focus {
-		border-color: var(--secondDark);
+		border-color: var(--color2);
 	}
 }

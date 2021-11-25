@@ -5,15 +5,15 @@ export const themes = {
 	    color1: "#1B1B1B",
 	    color2: "#4C4C4C",
 	    additional: "#A1A1A1",
-	    main: "#009485"
+	    main: "#DC3939"
 	},
 	dark: {
-		bg1: "#282828",
-	    bg2: "#1E1E1E",
-	    color1: "#FFFFFF",
-	    color2: "#CFCFCF",
-	    additional: "#888888",
-	    main: "#009485"
+		bg1: "#16151b",
+	    bg2: "#1c1b23",
+	    color1: "#DEDEDE",
+	    color2: "#BFBFBF",
+	    additional: "#8D8D8D",
+	    main: "#DC3939"
 	}
 }
 
