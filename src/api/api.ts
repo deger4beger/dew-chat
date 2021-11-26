@@ -2,7 +2,7 @@ import axios from "axios"
 import { IUserRecieve, IUserSend } from '../types/User';
 
 const mainInstance = axios.create({
-	baseURL: "http://localhost:3030/"
+	baseURL: "" // url need
 })
 
 export const userApi = {
