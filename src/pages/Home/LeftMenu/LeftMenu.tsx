@@ -8,7 +8,7 @@ const LeftMenu = () => {
 		{
 			title: "Vlad Shokorov",
 			date: "2021-11-28, 7:20",
-			lastMessage: "wtf man, what the fuck is going on ?",
+			lastMessage: "wtf man, what the fuck is going on ? Please tell me",
 			unreadCount: 1
 		},
 		{

@@ -10,6 +10,8 @@
 	border-right: 1px solid var(--additional);
 	left: 0;
 	display: flex;
-	justify-content: center;
-	padding: 10px 4px;
+	align-items: center;
+	padding: 10px 0;
+	display: flex;
+	flex-direction: column;
 }

@@ -1,0 +1,36 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	height: 100px;
+	justify-content: center;
+	width: 100%;
+	&:hover {
+		background-color: var(--bg2);
+		cursor: pointer;
+	}
+	& > div {
+		display: flex;
+		padding: 4px 8px;
+	}
+	& .title, .lastMessage {
+		width: 80%;
+		height: 1.8em;
+		overflow: hidden;
+	}
+	& .unreadCount, .date {
+		position: absolute;
+		right: 0;
+		font-size: var(--fsz14);
+		color: var(--color2);
+		padding-right: 10px;
+	}
+	& .unreadCount {
+		bottom: 0;
+		padding-bottom: 20px;
+	}
+	& .date {
+		top: 0;
+		padding-top: 20px;
+	}
+}

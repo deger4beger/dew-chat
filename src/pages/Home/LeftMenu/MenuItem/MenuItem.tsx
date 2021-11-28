@@ -10,22 +10,22 @@ interface IMenuItemProps {
 
 const MenuItem: React.FC<IMenuItemProps> = ({title, lastMessage, date, unreadCount}) => {
 	return (
-		<div>
+		<div className={s.wrapper}>
 			<div className={s.upper}>
 				<div className={s.title}>
 					{title}
 				</div>
-				{unreadCount && <div className={s.date}>
+				<div className={s.date}>
 					{date}
-				</div>}
+				</div>
 			</div>
 			<div className={s.lower}>
 				<div className={s.lastMessage}>
 					{lastMessage}
 				</div>
-				<div className={s.unreadCount}>
+				{ unreadCount && <div className={s.unreadCount}>
 					{unreadCount}
-				</div>
+				</div> }
 			</div>
 		</div>
 	)
