@@ -7,11 +7,11 @@ const mainInstance = axios.create({
 
 export const userApi = {
 	login(payload: IUserSend): Promise<IUserRecieve> {
-		return mainInstance.post<IUserRecieve>("user/login", payload)
+		return mainInstance.post<IUserRecieve>("user/login/", payload)
 			.then(res => res.data)
 	},
 	signup(payload: IUserSend): Promise<IUserRecieve> {
-		return mainInstance.post<IUserRecieve>("user/register", payload)
+		return mainInstance.post<IUserRecieve>("user/register/", payload)
 			.then(res => res.data)
 	}
 }
