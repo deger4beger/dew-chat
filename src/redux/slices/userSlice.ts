@@ -5,7 +5,6 @@ import { authThunk } from './userThunks';
 
 interface IInitalUserData {
     id: null | string
-    created: null | string
     username: null | string
     token: null | string
 }
@@ -20,7 +19,6 @@ interface IUserState {
 const initialState: IUserState = {
 	userData: {
         id: null,
-        created: null,
         username: null,
         token: null
     },
@@ -50,7 +48,6 @@ export const userSlice = createSlice({
         logout(state) {
             state.userData = {
                 id: null,
-                created: null,
                 username: null,
                 token: null
             }

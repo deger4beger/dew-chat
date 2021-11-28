@@ -2,7 +2,7 @@ import axios from "axios"
 import { IUserRecieve, IUserSend } from '../types/User';
 
 const mainInstance = axios.create({
-	baseURL: "" // url need
+	baseURL: "https://dew-chat.herokuapp.com"
 })
 
 export const userApi = {
