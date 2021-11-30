@@ -87,6 +87,7 @@ body {
 
 .mainBlock {
   padding-top: 58px;
+  padding-bottom: 26px;
   max-height: 100vh;
   min-height: 100vh;
 }

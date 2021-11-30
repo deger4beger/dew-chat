@@ -1,17 +1,12 @@
 .wrapper {
-	position: fixed;
-	top: 68px;
-	bottom: 26px;
-	height: calc(100vh - 68px - 26px - 10px);
+	height: 100%;
 	min-width: 300px;
 	max-width: 600px;
 	resize: horizontal;
 	overflow-x: auto;
 	border-right: 1px solid var(--additional);
-	left: 0;
 	display: flex;
 	align-items: center;
-	padding: 10px 0;
 	display: flex;
 	flex-direction: column;
 }
