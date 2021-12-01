@@ -5,8 +5,5 @@
 	resize: horizontal;
 	overflow-x: auto;
 	border-right: 1px solid var(--additional);
-	display: flex;
-	align-items: center;
-	display: flex;
-	flex-direction: column;
+	display: inline-block;
 }
