@@ -8,19 +8,19 @@ const LeftMenu = () => {
 		{
 			title: "Vlad Shokorov",
 			date: "2021-11-28, 7:20",
-			lastMessage: "wtf man, what the fuck is going on ? Please tell me",
-			unreadCount: 1
+			// lastMessage: "wtf man, what the fuck is going on ? Please tell me",
+			// unreadCount: 1
 		},
 		{
 			title: "Dmitry Sas",
 			date: "2021-11-28, 7:22",
-			lastMessage: "wtf man, what the fuck is going on ?",
-			unreadCount: 5
+			// lastMessage: "wtf man, what the fuck is going on ?",
+			// unreadCount: 5
 		},
 		{
 			title: "Kochinov Danila",
 			date: "2021-11-28, 6:20",
-			lastMessage: "wtf man, what the fuck is going on ?",
+			// lastMessage: "wtf man, what the fuck is going on ?",
 		}
 	]
 
