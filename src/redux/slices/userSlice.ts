@@ -3,7 +3,7 @@ import decode, {JwtPayload} from "jwt-decode"
 import { IUserRecieve } from '../../types/User';
 import { authThunk } from './userThunks';
 
-interface IInitalUserData {
+type IInitalUserData = {
     id: null | string
     username: null | string
     token: null | string
