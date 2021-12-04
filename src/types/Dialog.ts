@@ -1,4 +1,4 @@
 export interface IDialog {
-	id: string
+	_id: string
 	name: string
 }

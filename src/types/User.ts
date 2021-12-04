@@ -1,5 +1,5 @@
 export interface IUserRecieve {
-	id: string
+	_id: string
 	username: string
 	token: string
 }

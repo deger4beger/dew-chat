@@ -4,7 +4,7 @@ import { IUserRecieve } from '../../types/User';
 import { authThunk } from './userThunks';
 
 type IInitalUserData = {
-    id: null | string
+    _id: null | string
     username: null | string
     token: null | string
 }
@@ -18,7 +18,7 @@ interface IUserState {
 
 const initialState: IUserState = {
 	userData: {
-        id: null,
+        _id: null,
         username: null,
         token: null
     },
@@ -47,7 +47,7 @@ export const userSlice = createSlice({
         },
         logout(state) {
             state.userData = {
-                id: null,
+                _id: null,
                 username: null,
                 token: null
             }
