@@ -27,7 +27,7 @@ export const dialogApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: baseURL}),
     tagTypes: ['Dialog'],
     endpoints: (build) => ({
-        getAllDialogs: build.query<IDialog[], unknown>({
+        getAllDialogs: build.query<IDialog[], void>({
             query: () => ({
                 url: `/dialogs/`,
             }),

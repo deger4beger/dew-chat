@@ -1,9 +1,10 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import userReducer from "./slices/userSlice"
+import { dialogApi } from '../api/api';
 
 const rootReducer = combineReducers({
     userReducer,
-    // [postAPI.reducerPath]: postAPI.reducer
+    [dialogApi.reducerPath]: dialogApi.reducer
 })
 
 export const setupStore = () => {
@@ -11,9 +12,9 @@ export const setupStore = () => {
     {
         reducer: rootReducer,
         devTools: true,
-    //     middleware: (getDefaultMiddleware) =>
-    //         getDefaultMiddleware()
-    //             .concat(postAPI.middleware)
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware()
+                .concat(dialogApi.middleware)
     })
 }
 

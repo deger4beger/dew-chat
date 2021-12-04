@@ -1,33 +1,18 @@
 import React from 'react'
 import s from "./LeftMenu.module.scss"
 import MenuItem from './MenuItem/MenuItem';
+import { IDialog } from '../../../types/Dialog';
 
-const LeftMenu = () => {
+interface ILeftMenuProps {
+	data: IDialog[] | undefined
+}
 
-	const testData = [
-		{
-			title: "Vlad Shokorov",
-			date: "2021-11-28, 7:20",
-			// lastMessage: "wtf man, what the fuck is going on ? Please tell me",
-			// unreadCount: 1
-		},
-		{
-			title: "Dmitry Sas",
-			date: "2021-11-28, 7:22",
-			// lastMessage: "wtf man, what the fuck is going on ?",
-			// unreadCount: 5
-		},
-		{
-			title: "Kochinov Danila",
-			date: "2021-11-28, 6:20",
-			// lastMessage: "wtf man, what the fuck is going on ?",
-		}
-	]
+const LeftMenu: React.FC<ILeftMenuProps> = ({data}) => {
 
 	return (
 		<div className={s.wrapper}>
 			{
-				testData.map(el => <MenuItem {...el} />)
+				data ? data.map(el => <MenuItem name={el.name} key={el._id} />) : "Loading..."
 			}
 		</div>
 	)

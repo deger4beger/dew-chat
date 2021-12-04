@@ -2,18 +2,18 @@ import React from 'react'
 import s from "./MenuItem.module.scss"
 
 interface IMenuItemProps {
-	title: string
+	name: string
 	lastMessage?: string
 	// date: string
 	// unreadCount?: number
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({title, lastMessage}) => {
+const MenuItem: React.FC<IMenuItemProps> = ({name, lastMessage}) => {
 	return (
 		<div className={s.wrapper}>
 			<div className={s.upper}>
 				<div className={s.title}>
-					{title}
+					{name}
 				</div>
 				{/*<div className={s.date}>
 					{date}
