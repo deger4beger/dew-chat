@@ -9,7 +9,7 @@ const mainInstance = axios.create({
 	baseURL
 })
 
-// clean axios for redux thunks
+// clean axios
 export const userApi = {
 	login(payload: IUserSend): Promise<IUserRecieve> {
 		return mainInstance.post<IUserRecieve>("user/login/", payload)
@@ -21,7 +21,7 @@ export const userApi = {
 	}
 }
 
-// redux toolkit query
+// rtk query
 export const dialogApi = createApi({
     reducerPath: 'dialogApi',
     baseQuery: fetchBaseQuery({baseUrl: baseURL}),

@@ -26,6 +26,7 @@ const ThemeProvider: React.FC<IThemeProviderProps> = ({children}) => {
 		for (let [key, value] of Object.entries(themes[theme])) {
 			document.documentElement.style.setProperty(`--${key}`, value)
 		}
+		localStorage.setItem("theme", theme)
 		setTheme(theme)
 	}
 
