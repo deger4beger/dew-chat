@@ -10,7 +10,11 @@ const Home: React.FC = () => {
 
 	return (
 		<div className={s.wrapper}>
-			<LeftMenu data={data} />
+			<LeftMenu
+				data={data}
+				isLoading={isLoading}
+				error={error}
+			/>
 			<Main />
 		</div>
 	)
