@@ -7,14 +7,21 @@ interface ILeftMenuProps {
 	data: IDialog[] | undefined
 	isLoading?: boolean
 	error?: any
+	selectedUser: string | null
+	setSelectedUser: (id: string) => void
 }
 
-const LeftMenu: React.FC<ILeftMenuProps> = ({data, isLoading, error}) => {
+const LeftMenu: React.FC<ILeftMenuProps> = ({data, isLoading, error, selectedUser, setSelectedUser}) => {
 
 	return (
 		<div className={s.wrapper}>
 			{
-				data?.map(el => <MenuItem name={el.name} key={el._id} />)
+				data?.map(el => <MenuItem
+					name={el.name}
+					key={el._id}
+					isSelected={el._id === selectedUser}
+					onClick={() => setSelectedUser(el._id)}
+				/>)
 			}
 			{
 				isLoading && "Loading..."

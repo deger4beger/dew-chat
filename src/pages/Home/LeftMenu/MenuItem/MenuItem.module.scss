@@ -5,6 +5,9 @@
 	height: 100px;
 	justify-content: center;
 	width: 100%;
+	&.selected {
+		background-color: var(--bg2);
+	}
 	&:hover {
 		background-color: var(--bg2);
 		cursor: pointer;

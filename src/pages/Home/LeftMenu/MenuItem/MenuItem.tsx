@@ -1,16 +1,19 @@
 import React from 'react'
+import cn from "classnames"
 import s from "./MenuItem.module.scss"
 
 interface IMenuItemProps {
 	name: string
 	lastMessage?: string
+	isSelected: boolean
+	onClick: () => void
 	// date: string
 	// unreadCount?: number
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({name, lastMessage}) => {
+const MenuItem: React.FC<IMenuItemProps> = ({name, lastMessage, onClick, isSelected}) => {
 	return (
-		<div className={s.wrapper}>
+		<div className={cn(s.wrapper, {[s.selected]: isSelected})} onClick={onClick}>
 			<div className={s.upper}>
 				<div className={s.title}>
 					{name}

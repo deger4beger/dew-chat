@@ -4,7 +4,6 @@ import { IUserRecieve, IUserSend } from '../types/User';
 import { IDialog } from '../types/Dialog';
 
 const baseURL = "https://dew-chat.herokuapp.com"
-export const baseSocketURL = "ws://dew-chat.herokuapp.com/ws/"
 
 const mainInstance = axios.create({
 	baseURL
