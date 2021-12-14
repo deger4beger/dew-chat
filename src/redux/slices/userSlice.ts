@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import decode, {JwtPayload} from "jwt-decode"
 import { IUserRecieve } from '../../types/User';
 import { authThunk } from './userThunks';
+import { isTokenValid } from '../../validators/token';
 
 type IInitalUserData = {
     _id: null | string
@@ -10,38 +10,34 @@ type IInitalUserData = {
 }
 
 interface IUserState {
-	userData: IInitalUserData
-	isAuth: boolean
-	isLoading: boolean
-	error: string | null
+    userData: IInitalUserData
+    isAuth: boolean
+    isLoading: boolean
+    error: string | null
 }
 
 const initialState: IUserState = {
-	userData: {
+    userData: {
         _id: null,
         username: null,
         token: null
     },
-	isAuth: false,
-	isLoading: false,
-	error: null
+    isAuth: false,
+    isLoading: false,
+    error: null
 }
 
 export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-    	initializeUser(state) {
-    		const user = localStorage.getItem("user")
-    		if (user) {
-    			const userData: IUserRecieve = JSON.parse(user)
-    			const decodedToken = decode<JwtPayload>(userData.token)
-    			if (decodedToken.exp && (decodedToken.exp * 1000 > new Date().getTime())) {
-    				state.isAuth = true
-    				state.userData = userData
-    			}
-    		}
-    	},
+        initializeUser(state) {
+            const userData = isTokenValid()
+            if (userData) {
+                state.isAuth = true
+                state.userData = userData
+            }
+        },
         resetError(state) {
             state.error = null
         },
@@ -56,7 +52,7 @@ export const userSlice = createSlice({
         }
     },
     extraReducers: {
-    	[authThunk.pending.type]: (state) => {
+        [authThunk.pending.type]: (state) => {
             state.isLoading = true;
         },
         [authThunk.fulfilled.type]: (state, action: PayloadAction<IUserRecieve>) => {
