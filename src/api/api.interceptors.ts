@@ -2,12 +2,15 @@ import Axios from 'axios';
 import { AppDispatch } from '../redux/store';
 import { isTokenValid } from '../validators/token';
 import { logout } from '../redux/slices/userSlice';
+import { mainInstance } from './api';
 
 const interceptor = (dispatch: AppDispatch) => {
-    Axios.interceptors.request.use((config) => {
+    mainInstance.interceptors.request.use((config) => {
         const userData = isTokenValid()
         if (userData) {
-           (config.headers ??= {}).Authorization = `Bearer ${userData.token}`
+            // (config.headers ??= {}).Authorization = `Bearer ${userData.token}` not working
+            !config.headers && (config.headers = {})
+            config.headers.Authorization = `Bearer ${userData.token}`
         }
         if (userData === null) {
             dispatch(logout())
@@ -15,16 +18,6 @@ const interceptor = (dispatch: AppDispatch) => {
         }
         return config
     })
-    // Axios.interceptors.response.use(
-    //     (next) => {
-    //         return Promise.resolve(next);
-    //     },
-    //     (error) => {
-    //         // handle error here
-    //         // some dispatch
-    //         return Promise.reject(error);
-    //     }
-    // )
 }
 export default {
     interceptor,

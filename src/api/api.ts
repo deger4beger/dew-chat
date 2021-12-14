@@ -1,5 +1,6 @@
 import Axios from "axios"
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
+import { axiosBaseQuery } from './api.axiosquery';
 import { IUserRecieve, IUserSend } from '../types/User';
 import { IDialog } from '../types/Dialog';
 
@@ -23,15 +24,16 @@ export const userApi = {
 
 // rtk query
 export const dialogApi = createApi({
-    reducerPath: 'dialogApi',
-    baseQuery: fetchBaseQuery({baseUrl: baseURL}),
-    tagTypes: ['Dialog'],
+    reducerPath: "dialogApi",
+    baseQuery: axiosBaseQuery({baseUrl: baseURL}),
+    tagTypes: ["Dialog"],
     endpoints: (build) => ({
         getAllDialogs: build.query<IDialog[], void>({
             query: () => ({
-                url: `/dialogs/`,
+                url: "/dialogs/",
+                method: "get"
             }),
-            providesTags: result => ['Dialog']
+            providesTags: result => ["Dialog"]
         })
     })
 })
