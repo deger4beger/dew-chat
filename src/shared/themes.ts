@@ -13,7 +13,7 @@ export const themes = {
 	    color1: "#DEDEDE",
 	    color2: "#BFBFBF",
 	    additional: "#8D8D8D",
-	    main: "#54B1B0"
+	    main: "#5CB7B6"
 	}
 }
 

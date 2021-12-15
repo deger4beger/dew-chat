@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import s from "./Dialog.module.scss"
+import Input from './Input/Input';
+import MessagesBlock from './MessagesBlock/MessagesBlock';
 
 interface IDialogProps {
 	selectedUser: string
@@ -12,15 +14,12 @@ const Dialog: React.FC<IDialogProps> = ({selectedUser}) => {
 	useEffect(() => {
 
 		// const socket = io(`ws://dew-chat.herokuapp.com/ws/${selectedUser}`) Дерьмище нерабочее ?????????
-
 		// socket.on("connect", () => {
 		// 	socket.send("Connected hello")
 		// })
-
 		// socket.on("message", (message) => {
 		// 	console.log(message)
 		// })
-
 		// return () => socket.disconnect()
 
 		const socket = new WebSocket(`ws://dew-chat.herokuapp.com/ws/${selectedUser}`);
@@ -37,9 +36,16 @@ const Dialog: React.FC<IDialogProps> = ({selectedUser}) => {
 
 	}, [selectedUser])
 
+	const onSubmitMessage = (message: string) => {
+		console.log(message)
+	}
+
 	return (
-		<div>
-			Some dialog
+		<div className={s.wrapper}>
+			<MessagesBlock />
+			<Input
+				onSubmit={onSubmitMessage}
+			/>
 		</div>
 	)
 }
