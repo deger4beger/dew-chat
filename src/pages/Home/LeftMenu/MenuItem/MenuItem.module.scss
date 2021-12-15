@@ -13,6 +13,11 @@
 			color: var(--color1);
 		}
 	}
+	&.selected .title {
+		&  {
+			color: var(--main);
+		}
+	}
 	& > div {
 		display: flex;
 		padding: 4px 14px;
