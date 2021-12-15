@@ -5,12 +5,13 @@
 	height: 100px;
 	justify-content: center;
 	width: 100%;
-	&.selected {
-		background-color: var(--bg2);
-	}
-	&:hover {
+	color: var(--color2);
+	&:hover, &.selected {
 		background-color: var(--bg2);
 		cursor: pointer;
+		& .title {
+			color: var(--color1);
+		}
 	}
 	& > div {
 		display: flex;
