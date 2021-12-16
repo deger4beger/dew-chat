@@ -10,18 +10,24 @@ interface IAlternativeButtonProps {
 }
 
 const AlternativeButton: React.FC<IAlternativeButtonProps> = ({onClick, disabled, loading, styles}) => {
-	return <div
-		onClick={onClick}
-		style={styles}
-		className={
-			cn(
-				s.button,
-				{
-					[s.disabled]: disabled || loading,
-				}
-			)
-		}
-	/>
+	return (
+		<div
+			onClick={onClick}
+			style={styles}
+			className={
+				cn(
+					s.button,
+					{
+						[s.disabled]: disabled || loading,
+					}
+				)
+			}
+		>
+			<div className={s.content}>
+				➞
+			</div>
+		</div>
+	)
 }
 
 export default AlternativeButton
