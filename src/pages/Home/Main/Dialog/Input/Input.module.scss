@@ -1,13 +1,15 @@
-.input {
-	width: 100%;
-	height: auto;
-	min-height: 80px;
-	max-height: 140px;
-	background-color: var(--bg2);
-	color: var(--color1);
-	font-size: var(--fsz16);
-	padding: 10px 14px;
-	overflow: hidden;
-	resize: none;
-
+.wrapper {
+	display: flex;
+	align-items: flex-end;
+	& .input {
+		width: 100%;
+		height: auto;
+		max-height: 140px;
+		background-color: var(--bg2);
+		color: var(--color1);
+		font-size: var(--fsz16);
+		padding: 15px 30px;
+		overflow: hidden;
+		resize: none;
+	}
 }

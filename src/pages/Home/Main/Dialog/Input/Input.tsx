@@ -19,12 +19,16 @@ const Input: React.FC<IInputProps> = ({onSubmit}) => {
 	}
 
 	return (
-		<textarea
-			className={s.input}
-			value={value}
-			onChange={onChange}
-			ref={textareaRef}
-		/>
+		<div className={s.wrapper}>
+			<textarea
+				rows={1}
+				className={s.input}
+				value={value}
+				onChange={onChange}
+				ref={textareaRef}
+				placeholder="Write a message..."
+			/>
+		</div>
 	)
 }
 
