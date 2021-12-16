@@ -17,10 +17,8 @@
 		justify-content: flex-start;
 		align-items: center;
 		padding-left: 80px;
-		& * {
-			&:hover {
-				color: var(--color1);
-			}
+		& .logo:hover {
+			color: var(--color1);
 		}
 		.logo {
 			user-select: none;
