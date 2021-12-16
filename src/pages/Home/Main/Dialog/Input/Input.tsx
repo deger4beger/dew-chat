@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import s from "./Input.module.scss"
+import AlternativeButton from '../../../../../components/shared/AlternativeButton/AlternativeButton';
 
 interface IInputProps {
 	onSubmit: (message: string) => void
@@ -18,6 +19,10 @@ const Input: React.FC<IInputProps> = ({onSubmit}) => {
 		}
 	}
 
+	const onSendMessage = () => {
+		console.log(value)
+	}
+
 	return (
 		<div className={s.wrapper}>
 			<textarea
@@ -28,6 +33,11 @@ const Input: React.FC<IInputProps> = ({onSubmit}) => {
 				ref={textareaRef}
 				placeholder="Write a message..."
 			/>
+			<div className={s.button}>
+				<AlternativeButton
+					onClick={onSendMessage}
+				/>
+			</div>
 		</div>
 	)
 }

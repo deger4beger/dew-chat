@@ -1,0 +1,15 @@
+.button {
+	width: 80px;
+	height: 26px;
+	background-color: var(--main);
+	cursor: pointer;
+	opacity: 0.8;
+	border-radius: 6px;
+	&:hover {
+		opacity: 1;
+	}
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.6;
+	}
+}
