@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import s from "./Dialog.module.scss"
 import Input from './Input/Input';
 import MessagesBlock from './MessagesBlock/MessagesBlock';
+import getDialogId from '../../../../helpers/getDialogId';
 
 interface IDialogProps {
 	selectedUser: string
@@ -10,6 +11,8 @@ interface IDialogProps {
 const Dialog: React.FC<IDialogProps> = ({selectedUser}) => {
 
 	const [messages, setMessages] = useState<any>(null)
+
+	console.log(getDialogId("1ffe1", "2tgc3"))
 
 	useEffect(() => {
 
@@ -39,7 +42,67 @@ const Dialog: React.FC<IDialogProps> = ({selectedUser}) => {
 	const fakeData = [
 		{
 			_id: "iiddiqkd",
-			text: "HellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooHoooooooooooooooooooooo",
+			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
+			isMine: false
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Hello, how are you ?",
+			isMine: true
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
+			isMine: false
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Hello, how are you ?",
+			isMine: true
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
+			isMine: false
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Hello, how are you ?",
+			isMine: true
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
+			isMine: false
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Hello, how are you ?",
+			isMine: true
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
+			isMine: false
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Hello, how are you ?",
+			isMine: true
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
+			isMine: false
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Hello, how are you ?",
+			isMine: true
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
 			isMine: false
 		},
 		{
