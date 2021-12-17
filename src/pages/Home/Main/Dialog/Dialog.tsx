@@ -36,13 +36,32 @@ const Dialog: React.FC<IDialogProps> = ({selectedUser}) => {
 
 	}, [selectedUser])
 
+	const fakeData = [
+		{
+			_id: "iiddiqkd",
+			text: "HellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooHoooooooooooooooooooooo",
+			isMine: false
+		},
+		{
+			_id: "iiddiqkd",
+			text: "Hello, how are you ?",
+			isMine: true
+		}
+	]
+
 	const onSubmitMessage = (message: string) => {
-		console.log(message)
+		fakeData.unshift({
+			_id: "fewfwef",
+			text: message,
+			isMine: true
+		})
 	}
 
 	return (
 		<div className={s.wrapper}>
-			<MessagesBlock />
+			<MessagesBlock
+				messages={fakeData}
+			/>
 			<Input
 				onSubmit={onSubmitMessage}
 			/>

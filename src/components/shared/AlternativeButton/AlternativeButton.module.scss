@@ -4,7 +4,7 @@
 	border: 2px solid var(--color2);
 	cursor: pointer;
 	opacity: 0.8;
-	border-radius: 6px;
+	border-radius: var(--br);
 	display: flex;
 	align-items: center;
 	justify-content: center;
