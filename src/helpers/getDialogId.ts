@@ -16,7 +16,7 @@ const getDialogId = (id1: string, id2: string) => {
 		.map((el, index) => {
 			return Math.abs(el - idsArray2[index])
 		})
-		.join("-")
+		.join("")
 
 }
 

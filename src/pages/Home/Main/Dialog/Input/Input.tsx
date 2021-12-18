@@ -20,7 +20,8 @@ const Input: React.FC<IInputProps> = ({onSubmit}) => {
 	}
 
 	const onSendMessage = () => {
-		console.log(value)
+		onSubmit(value)
+		setValue("")
 	}
 
 	return (

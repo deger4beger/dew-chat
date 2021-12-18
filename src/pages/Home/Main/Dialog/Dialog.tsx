@@ -3,6 +3,8 @@ import s from "./Dialog.module.scss"
 import Input from './Input/Input';
 import MessagesBlock from './MessagesBlock/MessagesBlock';
 import getDialogId from '../../../../helpers/getDialogId';
+import { useAppSelector } from '../../../../hooks/redux';
+import { IMessage } from '../../../../types/Message';
 
 interface IDialogProps {
 	selectedUser: string
@@ -10,120 +12,54 @@ interface IDialogProps {
 
 const Dialog: React.FC<IDialogProps> = ({selectedUser}) => {
 
-	const [messages, setMessages] = useState<any>(null)
+	const [socket, setSocket] = useState<WebSocket | null>(null)
+	const [messages, setMessages] = useState<IMessage[]>([])
 
-	console.log(getDialogId("1ffe1", "2tgc3"))
+	const myId = useAppSelector(state => state.userReducer.userData._id)
 
+	console.log(socket)
 	useEffect(() => {
 
-		// const socket = io(`ws://dew-chat.herokuapp.com/ws/${selectedUser}`) Дерьмище нерабочее ?????????
-		// socket.on("connect", () => {
-		// 	socket.send("Connected hello")
-		// })
-		// socket.on("message", (message) => {
-		// 	console.log(message)
-		// })
-		// return () => socket.disconnect()
-
-		const socket = new WebSocket(`ws://dew-chat.herokuapp.com/ws/${selectedUser}`);
-
-		socket.onopen = () => {
-		  	socket.send("Connected react")
+		if (socket) {
+			socket.close()
+			setMessages([])
 		}
 
-		socket.onmessage = (e: MessageEvent) => {
-		  	console.log(e.data)
+		const ws: WebSocket = new WebSocket(
+			`ws://dew-chat.herokuapp.com/ws/${getDialogId(myId as string, selectedUser)}`
+		)
+
+		ws.onopen = () => {
+		  	ws.send(JSON.stringify({
+		  		current: myId,
+		  		interlocutor: selectedUser
+		  	}))
 		}
 
-		return () => socket.close()
+		ws.onmessage = (e: MessageEvent) => {
+			console.log(e.data)
+		  	setMessages(prev => [...prev, ...JSON.parse(e.data)])
+		}
+
+		setSocket(ws)
+
+		return () => ws?.close()
 
 	}, [selectedUser])
 
-	const fakeData = [
-		{
-			_id: "iiddiqkd",
-			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
-			isMine: false
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Hello, how are you ?",
-			isMine: true
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
-			isMine: false
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Hello, how are you ?",
-			isMine: true
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
-			isMine: false
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Hello, how are you ?",
-			isMine: true
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
-			isMine: false
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Hello, how are you ?",
-			isMine: true
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
-			isMine: false
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Hello, how are you ?",
-			isMine: true
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
-			isMine: false
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Hello, how are you ?",
-			isMine: true
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooo. Hoooooooooooooooooooooo",
-			isMine: false
-		},
-		{
-			_id: "iiddiqkd",
-			text: "Hello, how are you ?",
-			isMine: true
-		}
-	]
-
 	const onSubmitMessage = (message: string) => {
-		fakeData.unshift({
-			_id: "fewfwef",
-			text: message,
-			isMine: true
-		})
+		if (message.length > 0) {
+			socket?.send(JSON.stringify({
+		  		text: message,
+		  		senderId: myId
+		  	}))
+		}
 	}
 
 	return (
 		<div className={s.wrapper}>
 			<MessagesBlock
-				messages={fakeData}
+				messages={messages}
 			/>
 			<Input
 				onSubmit={onSubmitMessage}
