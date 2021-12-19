@@ -17,7 +17,6 @@ const Dialog: React.FC<IDialogProps> = ({selectedUser}) => {
 
 	const myId = useAppSelector(state => state.userReducer.userData._id)
 
-	console.log(socket)
 	useEffect(() => {
 
 		if (socket) {
@@ -37,7 +36,6 @@ const Dialog: React.FC<IDialogProps> = ({selectedUser}) => {
 		}
 
 		ws.onmessage = (e: MessageEvent) => {
-			console.log(e.data)
 		  	setMessages(prev => [...prev, ...JSON.parse(e.data)])
 		}
 
@@ -49,10 +47,7 @@ const Dialog: React.FC<IDialogProps> = ({selectedUser}) => {
 
 	const onSubmitMessage = (message: string) => {
 		if (message.length > 0) {
-			socket?.send(JSON.stringify({
-		  		text: message,
-		  		senderId: myId
-		  	}))
+			socket?.send(message)
 		}
 	}
 
