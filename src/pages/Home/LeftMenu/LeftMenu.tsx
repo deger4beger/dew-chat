@@ -16,12 +16,14 @@ const LeftMenu: React.FC<ILeftMenuProps> = ({data, isLoading, error, selectedUse
 	return (
 		<div className={s.wrapper}>
 			{
-				data?.map(el => <MenuItem
-					name={el.name}
-					key={el._id}
-					isSelected={el._id === selectedUser}
-					onClick={() => setSelectedUser(el._id)}
-				/>)
+				data?.map(el => {
+					return <MenuItem
+						name={el.name}
+						key={el._id}
+						isSelected={el._id === selectedUser}
+						onClick={() => setSelectedUser(el._id)}
+					/>
+				})
 			}
 			{
 				isLoading && "Loading..."
