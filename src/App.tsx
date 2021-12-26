@@ -17,7 +17,7 @@ function App() {
     return (
         <>
             <Header />
-            <div className="mainBlock" data-testid="main">
+            <div className="mainBlock">
             	<AppRouter />
             </div>
             <Footer />
