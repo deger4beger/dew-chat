@@ -24,6 +24,13 @@ const Input: React.FC<IInputProps> = ({onSubmit}) => {
 		setValue("")
 	}
 
+	const onEnterClick = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+		if (e.key === "Enter") {
+			e.preventDefault()
+			onSendMessage()
+		}
+    }
+
 	return (
 		<div className={s.wrapper}>
 			<textarea
@@ -31,6 +38,7 @@ const Input: React.FC<IInputProps> = ({onSubmit}) => {
 				className={s.input}
 				value={value}
 				onChange={onChange}
+				onKeyPress={onEnterClick}
 				ref={textareaRef}
 				placeholder="Write a message..."
 			/>
