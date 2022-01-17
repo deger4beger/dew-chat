@@ -25,6 +25,9 @@ const Input: React.FC<IInputProps> = ({onSubmit}) => {
 	}
 
 	const onEnterClick = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+		if (e.key === 'Enter' && e.shiftKey) {
+			return
+		}
 		if (e.key === "Enter") {
 			e.preventDefault()
 			onSendMessage()
