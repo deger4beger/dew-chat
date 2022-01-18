@@ -1,5 +1,6 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
+import * as Redux from "react-redux"
 import Header from './components/single/Header/Header';
 import Footer from './components/single/Footer/Footer';
 import AppRouter from './router/AppRouter';
@@ -16,24 +17,29 @@ jest.mock("./components/single/Header/Header", () => ({
 }))
 jest.mock("./components/single/Footer/Footer", () => ({
     __esModule: true,
-      default: jest.fn(() => (
-           <div data-testid="Footer" />
-      ))
+    default: jest.fn(() => (
+        <div data-testid="Footer" />
+    ))
 }))
 jest.mock("./router/AppRouter", () => ({
     __esModule: true,
-      default: jest.fn(() => (
-           <div data-testid="AppRouter" />
-      ))
+    default: jest.fn(() => (
+        <div data-testid="AppRouter" />
+    ))
 }))
 
 
 describe("App", () => {
+
+    beforeEach(() => {
+        jest.clearAllMocks()
+    })
+
+    const useDispatchMock = jest.spyOn(Redux, 'useDispatch')
+
   	it("Render app component", () => {
 
     	render(<AppProvider component={<App />} />)
-
-        screen.debug()
 
     	expect(screen.queryByTestId("Header"))
       		.toBeInTheDocument()
@@ -43,5 +49,16 @@ describe("App", () => {
       		.toBeInTheDocument()
 
   	})
+
+    it("Dispatch should have been called", () => {
+
+        render(<AppProvider component={<App />} />)
+
+        const fakeDispatch = jest.fn()
+        useDispatchMock.mockReturnValue(fakeDispatch)
+
+        expect(useDispatchMock).toHaveBeenCalled()
+    })
+
 })
 
