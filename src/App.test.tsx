@@ -30,16 +30,16 @@ jest.mock("./router/AppRouter", () => ({
 
 describe("App component", () => {
 
-    beforeEach(() => {
-        jest.clearAllMocks()
-    })
+    // beforeEach(() => {
+    //     jest.clearAllMocks()
+    // })
 
     const useDispatchMock = jest.spyOn(CustomReduxHooks, 'useAppDispatch')
     const fakeDispatch = jest.fn()
 
     useDispatchMock.mockReturnValue(fakeDispatch)
 
-    it("Render component", () => {
+    it("All components are in the document", () => {
 
         render(<AppProvider component={<App />} />)
 
