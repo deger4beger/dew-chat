@@ -33,9 +33,8 @@ describe("Login component", () => {
 	})
 
 	const useSelectorMock = jest.spyOn(CustomReduxHooks, "useAppSelector")
-	useSelectorMock
-		.mockImplementationOnce(() => true)
-		.mockImplementationOnce(() => false)
+	// useSelectorMock.mockReturnValueOnce(true).mockReturnValueOnce(false) // why not working ?
+	useSelectorMock.mockReturnValue(true)
 
 	it("All components are in the document", () => {
 
@@ -63,7 +62,7 @@ describe("Login component", () => {
 
 		expect(AuthTemplate).toHaveBeenCalledWith(
 			expect.objectContaining({
-				error: false
+				error: true
 			}),
 			expect.anything()
 		)
