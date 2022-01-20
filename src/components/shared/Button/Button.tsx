@@ -14,7 +14,7 @@ const Button: React.FC<IButtonProps> = ({content, onClick, disabled, loading}) =
 	return <div onClick={onClick} className={cn(s.button, {
 			[s.disabled]: disabled,
 			[s.loading]: loading
-		})}>
+		})} role="button">
 		<div className={cn(s.content, {[s.loading]: loading})}>
 			<div className={s.text}>
 				{content}
