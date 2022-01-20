@@ -9,12 +9,12 @@ describe("PiblicMenu component", () => {
 
 	it('Routes /login & /register working', async () => {
 
-		const history: any = createMemoryHistory()
+		const history = createMemoryHistory()
 
 		history.push = jest.fn()
 
 		render(
-		    <Router history={history}>
+		    <Router history={history as any}>
 		      	<PublicMenu />
 		    </Router>
 		)
