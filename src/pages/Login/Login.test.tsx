@@ -28,9 +28,9 @@ jest.mock("../../components/shared/Input/Input", () => ({
 
 describe("Login component", () => {
 
-	beforeEach(() => {
-		useSelectorMock.mockClear()
-	})
+	// beforeEach(() => {
+	// 	jest.clearAllMocks()
+	// })
 
 	const useSelectorMock = jest.spyOn(CustomReduxHooks, "useAppSelector")
 	// useSelectorMock.mockReturnValueOnce(true).mockReturnValueOnce(false) // why not working ?
@@ -58,11 +58,15 @@ describe("Login component", () => {
 
 	it("Correct props are passed to AuthTemplate and Button", () => {
 
+		useSelectorMock
+			.mockReturnValueOnce(true)
+			.mockReturnValueOnce(false)
+
 		render(<AppProvider component={<Login />} />)
 
 		expect(AuthTemplate).toHaveBeenCalledWith(
 			expect.objectContaining({
-				error: true
+				error: false
 			}),
 			expect.anything()
 		)
