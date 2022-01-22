@@ -16,7 +16,7 @@ interface IUserState {
     error: string | null
 }
 
-const initialState: IUserState = {
+export const initialState: IUserState = {
     userData: {
         _id: null,
         username: null,
