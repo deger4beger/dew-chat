@@ -30,7 +30,7 @@ describe("Button component", () => {
 
 	})
 
-	it("Content is shown inside button", () => {
+	it("Content is shown inside button and disabled and loading classes working", () => {
 
 		const content = "btn", onClick = jest.fn()
 

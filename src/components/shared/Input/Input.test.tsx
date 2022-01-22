@@ -29,29 +29,32 @@ describe("Button component", () => {
 
 	it("onChange triggers with typed value" ,() => {
 
-		const onChange = jest.fn()
+		const onChange = jest.fn((e: React.ChangeEvent<HTMLInputElement>) => e.currentTarget.value)
 
 		render(
 			<Input
 				name={"input"}
 				placeholder={"input"}
 				type={"text"}
-				value={"hello"}
+				value={"hell"}
 				onChange={onChange}
 			/>
 		)
 
 		const input: any = screen.getByRole("textbox")
 
-		expect(input.value).toBe("hello")
+		expect(input.value).toBe("hell")
 
-		userEvent.type(input, "b")
+		userEvent.type(input, "o")
 
-		expect(onChange).toBeCalledTimes(1)
+		expect(onChange).toHaveBeenCalledTimes(1)
+		expect(onChange).toHaveReturnedWith("hello")
 
-		fireEvent.change(input, {target: {value: "brother"}})
+		userEvent.type(input, "braza")
+		expect(onChange).toHaveBeenCalledTimes(6)
 
-		expect(onChange).toBeCalledWith("brother")
+		// fireEvent.change(input, {target: {value: "brother"}})
+		// expect(onChange).toBeCalledWith("brother")
 
 	})
 
