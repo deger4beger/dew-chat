@@ -6,6 +6,7 @@ import AppProvider from '../../providers/AppProvider';
 import AuthTemplate from '../../components/templates/AuthTemplate/AuthTemplate';
 import Button from '../../components/shared/Button/Button';
 import Input from '../../components/shared/Input/Input';
+import { resetError } from '../../redux/slices/userSlice';
 
 jest.mock("../../components/templates/AuthTemplate/AuthTemplate", () => ({
     __esModule: true,
@@ -28,8 +29,12 @@ jest.mock("../../components/shared/Input/Input", () => ({
 
 describe("Login component", () => {
 
-	const useSelectorMock = jest.spyOn(CustomReduxHooks, "useAppSelector")
+	const useSelectorMock = jest.spyOn(CustomReduxHooks, "useAppSelector"),
+		useDispatchMock = jest.spyOn(CustomReduxHooks, "useAppDispatch")
+	const fakeDispatch = jest.fn()
+
 	useSelectorMock.mockReturnValue(true)
+	useDispatchMock.mockReturnValue(fakeDispatch)
 
 	it("All components are in the document", () => {
 
@@ -75,6 +80,17 @@ describe("Login component", () => {
 			}),
 			expect.anything()
 		)
+
+	})
+
+	it("resetError shuld be dispatched when component unmount", () => {
+
+		const { unmount } = render(<AppProvider component={<Login />} />)
+
+		unmount()
+
+		expect(fakeDispatch).toHaveBeenCalledTimes(1)
+		expect(fakeDispatch).toHaveBeenCalledWith(resetError())
 
 	})
 
