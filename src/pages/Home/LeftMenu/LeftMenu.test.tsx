@@ -48,8 +48,8 @@ describe("Login component", () => {
 
 		const menuItemProps = (MenuItem as jest.Mock).mock.calls.map(
     		(args, index) => ({
-    			name: args[index].name,
-    			isSelected: args[index]._id === selectedUser
+    			name: args[0].name,
+    			isSelected: args[0].isSelected
     		})
     	)
 
