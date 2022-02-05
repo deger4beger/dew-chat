@@ -64,8 +64,6 @@ describe("Login component", () => {
 
 		render(<AppProvider component={<Login />} />)
 
-		expect(useSelectorMock).toHaveBeenCalledTimes(2)
-
 		expect(AuthTemplate).toHaveBeenCalledWith(
 			expect.objectContaining({
 				error: false
