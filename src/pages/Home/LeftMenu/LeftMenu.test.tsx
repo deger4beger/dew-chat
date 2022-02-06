@@ -47,7 +47,7 @@ describe("Login component", () => {
 		 />} />)
 
 		const menuItemProps = (MenuItem as jest.Mock).mock.calls.map(
-    		(args, index) => ({
+    		args => ({
     			name: args[0].name,
     			isSelected: args[0].isSelected
     		})
@@ -63,6 +63,52 @@ describe("Login component", () => {
     			isSelected: true
     		}
     	])
+
+	})
+
+	it("Preloader is working", () => {
+
+		const { unmount } = render(<AppProvider component={<LeftMenu
+			data={data}
+			selectedUser={selectedUser}
+			setSelectedUser={setSelectedUser}
+		 />} />)
+
+		expect(screen.queryByText(/Loading.../)).not.toBeInTheDocument()
+
+		unmount()
+
+		render(<AppProvider component={<LeftMenu
+			data={data}
+			selectedUser={selectedUser}
+			setSelectedUser={setSelectedUser}
+			isLoading={true}
+		 />} />)
+
+		expect(screen.queryByText(/Loading.../)).toBeInTheDocument()
+
+	})
+
+	it("Error is working", () => {
+
+		const { unmount } = render(<AppProvider component={<LeftMenu
+			data={data}
+			selectedUser={selectedUser}
+			setSelectedUser={setSelectedUser}
+		 />} />)
+
+		expect(screen.queryByText(/error/)).not.toBeInTheDocument()
+
+		unmount()
+
+		render(<AppProvider component={<LeftMenu
+			data={data}
+			selectedUser={selectedUser}
+			setSelectedUser={setSelectedUser}
+			error={true}
+		 />} />)
+
+		expect(screen.queryByText(/error/)).toBeInTheDocument()
 
 	})
 
